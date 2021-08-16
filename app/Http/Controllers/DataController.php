@@ -7,6 +7,10 @@ use App\Models\Data;
 
 class DataController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $datas = Data::all();
         return view('/index',compact('datas'));

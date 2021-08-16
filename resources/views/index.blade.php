@@ -28,7 +28,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr>      
                      @foreach ($datas as $no => $data)
                       <tr>
                         <th Scope="col">{{$no+1}}</th>

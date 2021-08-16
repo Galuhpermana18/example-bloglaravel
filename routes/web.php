@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 // use App\Models\Data;
 use App\Http\Controllers\DataController;
+//use App\Http\Middleware\CheckRole;
+// use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,9 @@ Route::post('/simpan', [DataController::class, 'simpan'])->name('simpan_data');
 Route::delete('/delete{id}', [DataController::class, 'delete']);
 Route::get('/edit/{id}', [DataController::class, 'edit'])->name('edit');
 Route::put('/update/{id}', [DataController::class, 'update'])->name('update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('penulis', function () { return view('penulis'); })->middleware(['checkRole:admin,penulis']);
+Route::get('pembaca', function () { return view('pembaca'); })->middleware('checkRole:pembaca');
